@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">MyPassMemo</string>
+    <string name="text01_title">アカウント一覧</string>
+    <string name="button01_back">戻る</string>
+
+    <!-- ここからedhit_pass.xml関連 -->
+    <string name="text02_title">アカウント編集</string>
+    <string name="text02_library">登録名</string>
+    <string name="text02_loginid">LoginID</string>
+    <string name="text02_passwd">PassWD</string>
+    <string name="text02_memo">メモ</string>
+    <string name="text02_kome">※</string>
+
+    <string name="text02_libraryhint">全角・半角30文字以内</string>
+
+    <!-- タイトル -->
+    <string name="name_selectsheet_library">登録名一覧画面</string>
+    <string name="name_selectsheet_listview">ListView表示画面</string>
+
+
+
+    <string name="text02_memohint">全角・半角120文字以内</string>
+    <string name="text02_hintnumber">半角数字</string>
+    <string name="button02_regist">登録</string>
+    <string name="button02_show">一覧にもどる</string>
+    <string name="button02_new">新規作成</string>
+
+    <!-- 選択用RadioButton -->
+    <string name="radio02_library">登録名一覧 (ListView×ArrayAdapter)</string>
+    <string name="radio02_listview">ListView表示 (ListView×BaseAdapter)</string>
+    <!-- ここまで -->
+
+</resources>
+
+<!-- #############################################3################# -->
+<!--
+<resources>
+
+<string name="action_settings">Settings</string>
+-->
+
+
+<!-- ここからselect_sheet_library 02関連 -->
+<!-- select_sheet_liblary 02 -->
+<!--
+<string name="text02_title_detail">ListViewを表示する為にArrayAdapterを使ってシンプルに登録名だけをリスト表示します。</string>
+<string name="text02_title">登録名一覧</string>
+<string name="button02_alldelete">全削除</string>
+-->
+<!-- row_sheet_listview 05 -->
+<!--
+<string name="text05_title_liblary">登録名:</string>
+<string name="text05_title_loginid">ID:</string>
+<string name="text05_title_passwd">PW:</string>
+<string name="text05_title_memo">メモ:</string>
+<string name="text05_button_edit">編集</string>
+-->
+<!-- ここまで -->
+
+<!-- select_sheet_listview 03 -->
+<!--
+<string name="text03_title_detail">BaseAdapterを使いListViewをカスタムしてリスト表示します。</string>
+
+</resources>
+-->

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.billies_works.mypassmemo.MainActivity">
+
+<!-- 登録名 -->
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02Library"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:id="@+id/text02Library"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/text02_library"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text02Kome01"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="@string/text02_kome"
+            android:textColor="#ff0000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editText02Library"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:ems="10"
+            android:hint="@string/text02_libraryhint"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:minLines="1"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02LoginId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/LinearLayout02Library"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:id="@+id/text02LoginId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/text02_loginid"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text02Kome02"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="@string/text02_kome"
+            android:textColor="#ff0000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editText02LoginID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:ems="10"
+            android:hint="@string/text02_libraryhint"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:minLines="1"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/LinearLayout02PassWD"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_below="@+id/LinearLayout02LoginId"
+    android:layout_marginTop="8dp"
+    android:orientation="horizontal"
+    tools:ignore="RtlHardcoded">
+
+    <TextView
+        android:id="@+id/text02PassWD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="@string/text02_passwd"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text02Kome03"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:text="@string/text02_kome"
+        android:textColor="#ff0000"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/editText02PassWD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/text02_libraryhint"
+        android:inputType="text"
+        android:lines="1"
+        android:maxLength="30"
+        android:maxLines="1"
+        android:minLines="1"
+        android:textSize="16sp" />
+</LinearLayout>
+
+<LinearLayout
+    android:id="@+id/LinearLayout02Memo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_below="@+id/LinearLayout02PassWD"
+    android:layout_marginTop="8dp"
+    android:orientation="horizontal"
+    tools:ignore="RtlHardcoded">
+
+    <TextView
+        android:id="@+id/text01Memo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="@string/text02_memo"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text02Kome04"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:text="@string/text02_kome"
+        android:textColor="#ff0000"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/editText02Memo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:ellipsize="end"
+        android:ems="10"
+        android:hint="@string/text02_memohint"
+        android:inputType="text|textMultiLine"
+        android:lines="5"
+        android:maxLength="120"
+        android:maxLines="5"
+        android:minLines="5"
+        android:textSize="16sp" />
+</LinearLayout>
+
+<Button
+    android:id="@+id/button02Regist"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/LinearLayout02Memo"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="12dp"
+    android:text="@string/button02_regist"
+    android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/button02Show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button02Regist"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="@string/button02_show"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/button02New"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button02Show"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="@string/button02_new"
+        android:textSize="16sp" />
+
+</RelativeLayout>
