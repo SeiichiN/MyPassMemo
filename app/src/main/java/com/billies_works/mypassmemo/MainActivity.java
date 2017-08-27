@@ -1,5 +1,6 @@
 package com.billies_works.mypassmemo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.database.Cursor;
@@ -76,8 +77,16 @@ public class MainActivity extends AppCompatActivity {
                         // 処理
                         String msg = String.format("id= %d", id);
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+
+                        // activity_mainへ遷移
+                        Intent intent = new Intent(MainActivity.this, com.billies_works.mypassmemo.EditPass.class);
+                        intent.putExtra("dbNo", id);
+                        startActivity(intent);
+
                     }
+
                 }
+
         );
 
     }
