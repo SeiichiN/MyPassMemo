@@ -22,7 +22,7 @@ public class EditPass extends AppCompatActivity {
 
         Intent i = this.getIntent();
         if (i != null) {
-            int listID = (int) i.getIntExtra("dbNo", 0);
+            long listID = (long) i.getLongExtra("dbNo", 0);
             String msg = String.format("ID = %d", listID);
             Log.d("取得したlistID: ", msg);
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
