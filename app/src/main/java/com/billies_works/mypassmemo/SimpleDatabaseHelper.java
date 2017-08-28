@@ -19,7 +19,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
     /**
      * DBのカラム名
      */
-    public final static String COL_ID = "_id";
+    public static String COL_ID = "_id";
     public final static String COL_LIBRARY = "library";
     public final static String COL_LOGINID = "loginid";
     public final static String COL_PASSWD = "passwd";
@@ -80,5 +80,10 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor readAll(SQLiteDatabase db) {
         return db.query(DB_TABLE, null,null,null,null, null, null);
+    }
+
+    public Cursor searchId(SQLiteDatabase db, String[] args) {
+        String whereid = COL_ID = "= ?";
+        return db.query(DB_TABLE, null, whereid, args, null, null, null, null);
     }
 }
