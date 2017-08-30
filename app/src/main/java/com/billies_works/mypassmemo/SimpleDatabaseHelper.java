@@ -83,7 +83,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public Cursor searchId(SQLiteDatabase db, String[] args) {
-        String whereid = COL_ID = "= ?";
+        String whereid = COL_ID + "= ?";
         return db.query(DB_TABLE, null, whereid, args, null, null, null, null);
     }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,10 +54,10 @@ public class EditPass extends AppCompatActivity {
         items = new ArrayList<>();
 
         // ListView -- レイアウトファイルと変数を結びつける
-        mEditText02Library = (TextView) findViewById(R.id.editText02Library);
-        mEditText02LoginId = (TextView) findViewById(R.id.editText02LoginID);
-        mEditText02Password = (TextView) findViewById(R.id.editText02PassWD);
-        mEditText02Memo = (TextView) findViewById(R.id.editText02Memo);
+        mEditText02Library = (EditText) findViewById(R.id.editText02Library);
+        mEditText02LoginId = (EditText) findViewById(R.id.editText02LoginID);
+        mEditText02Password = (EditText) findViewById(R.id.editText02PassWD);
+        mEditText02Memo = (EditText) findViewById(R.id.editText02Memo);
 
 
         if (listId >= 0) {
@@ -65,13 +66,14 @@ public class EditPass extends AppCompatActivity {
             helper = new SimpleDatabaseHelper(this);
 
             // データベース取得
-            SQLiteDatabase db = helper.getReadableDatabase();
+            SQLiteDatabase db = helper.getWritableDatabase();
             Cursor cs = null;
             try {
                 Toast.makeText(this, "接続しました。",Toast.LENGTH_SHORT).show();
                 // ヘルパーを使ってデータをカーソルに読み込む。
                 String[] idNo = {String.valueOf(listId)};
                 cs = helper.searchId(db, idNo);
+
                 if (cs.moveToFirst()){
                     do {
                         mEditText02Library.setText(cs.getString(1));
