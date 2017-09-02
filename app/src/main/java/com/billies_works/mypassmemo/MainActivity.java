@@ -75,12 +75,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> av,
                                             View view, int position, long id) {
                         // 処理
-                        String msg = String.format("id= %d", id);
+                        String msg = String.format("id= %d", id + 1);
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
 
                         // activity_mainへ遷移
                         Intent intent = new Intent(MainActivity.this, com.billies_works.mypassmemo.EditPass.class);
-                        intent.putExtra("dbNo", id);
+                        intent.putExtra("dbNo", id + 1);
                         startActivity(intent);
 
                     }

@@ -1,5 +1,6 @@
 package com.billies_works.mypassmemo;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -85,5 +86,27 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
     public Cursor searchId(SQLiteDatabase db, String[] args) {
         String whereid = COL_ID + "= ?";
         return db.query(DB_TABLE, null, whereid, args, null, null, null, null);
+    }
+
+    public boolean save(SQLiteDatabase db, long id, String[] args) {
+        ContentValues values = new ContentValues();
+        values.put(COL_LIBRARY, args[0]);
+        values.put(COL_LOGINID, args[1]);
+        values.put(COL_PASSWD, args[2]);
+        values.put(COL_MEMO, args[3]);
+        String whereClause = COL_ID + " = ?";
+        String whereArgs[] = {String.valueOf(id)};
+        db.update(DB_TABLE, values,whereClause, whereArgs);
+        return true;
+        /*
+        // この方法でやりたかったが、知りたい情報が見つからなかった。
+        String textData = "UPDATE " + DB_TABLE + "SET "
+                + COL_LIBRARY + " = ?, "
+                + COL_LOGINID + " = ?, "
+                + COL_PASSWD + " = ?, "
+                + COL_MEMO + " = ? "
+                +  "WHERE " + COL_ID + " = ?";
+        db.execSQL(textData);
+        */
     }
 }
