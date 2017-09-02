@@ -40,6 +40,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
     /**
      * SQLiteOpenHelperは、データベースを開く際にデータベースの有無を調べる。
      * データベースが存在しない場合にデータベースを作成する。
+     *
      * @param db
      */
     @Override
@@ -75,20 +76,38 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int old_v, int new_v) {
-        db.execSQL("DROP TABLE IF EXISTS " + DB_TABLE );
+        db.execSQL("DROP TABLE IF EXISTS " + DB_TABLE);
         onCreate(db);
     }
 
     public Cursor readAll(SQLiteDatabase db) {
-        return db.query(DB_TABLE, null,null,null,null, null, null);
+        return db.query(DB_TABLE, null, null, null, null, null, null);
     }
 
+    /**
+     * searchId -- id値でデータベースを検索する
+     *
+     * @param db
+     * @param args -- 検索するidを配列で収める。
+     *             実際にはこの配列にはデータがひとつしかない。
+     *             （検索するid値のみ）
+     * @return -- そのidのデータがCursorオブジェクトに収められる。
+     */
     public Cursor searchId(SQLiteDatabase db, String[] args) {
         String whereid = COL_ID + "= ?";
         return db.query(DB_TABLE, null, whereid, args, null, null, null, null);
     }
 
-    public boolean save(SQLiteDatabase db, long id, String[] args) {
+    /**
+     * save -- データベースにデータをセーブする。
+     *
+     * @param db   　-- データベースのオブジェクト
+     * @param id   -- 保存するid(テーブルのカラムid)
+     * @param args -- 保存するデータの配列
+     *             順番は、テーブル作成時に設定したカラムの順番であること。
+     * @return -- 成功時(true) 失敗時(false)
+     */
+    public boolean saveUpdate(SQLiteDatabase db, long id, String[] args) {
         ContentValues values = new ContentValues();
         values.put(COL_LIBRARY, args[0]);
         values.put(COL_LOGINID, args[1]);
@@ -96,7 +115,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_MEMO, args[3]);
         String whereClause = COL_ID + " = ?";
         String whereArgs[] = {String.valueOf(id)};
-        db.update(DB_TABLE, values,whereClause, whereArgs);
+        db.update(DB_TABLE, values, whereClause, whereArgs);
         return true;
         /*
         // この方法でやりたかったが、知りたい情報が見つからなかった。
@@ -108,5 +127,22 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
                 +  "WHERE " + COL_ID + " = ?";
         db.execSQL(textData);
         */
+    }
+
+    /**
+     * saveNew -- データベースに新規登録する。
+     * @param db
+     * @param args -- 登録するデータを配列で指定。
+     *             配列の順番は、テーブルのカラム順であること。
+     * @return -- true or false
+     */
+    public boolean saveNew(SQLiteDatabase db, String[] args) {
+        ContentValues values = new ContentValues();
+        values.put(COL_LIBRARY, args[0]);
+        values.put(COL_LOGINID, args[1]);
+        values.put(COL_PASSWD, args[2]);
+        values.put(COL_MEMO, args[3]);
+        db.insert(DB_TABLE, null, values);
+        return true;
     }
 }

@@ -30,6 +30,11 @@ public class EditPass extends AppCompatActivity {
     private TextView mEditText02Password;
     private TextView mEditText02Memo;
 
+    private TextView mText02Kome01;
+    private TextView mText02Kome02;
+    private TextView mText02Kome03;
+    private TextView mText02Kome04;
+
     private Button mButton02Regist;
     private Button mButton02Show;
     private Button mButton02New;
@@ -67,14 +72,19 @@ public class EditPass extends AppCompatActivity {
                 }
             }
         });
+
+        mButton02New.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newData();
+            }
+        });
     }
 
     private void loadData(long listId){
 
         // 配列を用意
         items = new ArrayList<>();
-
-
 
         if (listId >= 0) {
             Toast.makeText(this, String.format("ID = %d", listId), Toast.LENGTH_SHORT).show();
@@ -118,15 +128,27 @@ public class EditPass extends AppCompatActivity {
         SQLiteDatabase db = helper.getWritableDatabase();
         try {
             Toast.makeText(this, "接続しました。", Toast.LENGTH_SHORT).show();
-            if (helper.save(db, idNo, saveData)) {
-                Toast.makeText(this, "更新しました。", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "更新できませんでした。", Toast.LENGTH_SHORT).show();
+            if (idNo > 0) {
+                if (helper.saveUpdate(db, idNo, saveData)) {
+                    Toast.makeText(this, "更新しました。", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "更新できませんでした。", Toast.LENGTH_SHORT).show();
+                }
+            } else if (idNo == 0) {
+                if (helper.saveNew(db, saveData)) {
+                    Toast.makeText(this, "新規登録しました。", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "新規登録に失敗しました。", Toast.LENGTH_SHORT).show();
+                }
             }
-            ;
         } finally {
             db.close();
         }
+    }
+
+    private void newData() {
+        init();
+        listID = (long) 0;
     }
 
     /**
@@ -140,9 +162,31 @@ public class EditPass extends AppCompatActivity {
         mEditText02Password = (EditText) findViewById(R.id.editText02PassWD);
         mEditText02Memo = (EditText) findViewById(R.id.editText02Memo);
 
+        mText02Kome01 = (TextView) findViewById(R.id.text02Kome01);
+        mText02Kome02 = (TextView) findViewById(R.id.text02Kome02);
+        mText02Kome03 = (TextView) findViewById(R.id.text02Kome03);
+        mText02Kome04 = (TextView) findViewById(R.id.text02Kome04);
+
         mButton02Regist = (Button) findViewById(R.id.button02Regist);
         mButton02Show = (Button) findViewById(R.id.button02Show);
         mButton02New = (Button) findViewById(R.id.button02New);
+    }
+
+    /**
+     * 初期値設定 (EditTextの入力欄は空白、※印は消す)
+     * init()
+     */
+    private void init() {
+        mEditText02Library.setText("");
+        mEditText02LoginId.setText("");
+        mEditText02Password.setText("");
+        mEditText02Memo.setText("");
+
+        mText02Kome01.setText("");
+        mText02Kome02.setText("");
+        mText02Kome03.setText("");
+        mText02Kome04.setText("");
+        mEditText02Library.requestFocus();      // フォーカスを登録名のEditTextに指定
     }
 
 }

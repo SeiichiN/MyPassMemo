@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cs = null;
         try {
-            Toast.makeText(this, "接続しました。",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "データを読み込みます。",Toast.LENGTH_SHORT).show();
             // ヘルパーを使ってデータをカーソルに読み込む。
             cs = helper.readAll(db);
             if (cs.moveToFirst()){
