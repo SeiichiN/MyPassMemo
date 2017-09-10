@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.AtomicFile;
 
 /**
  * 参考：『Androidアプリ開発・第２版』p.465
@@ -102,7 +103,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
      * save -- データベースにデータをセーブする。
      *
      * @param db   　-- データベースのオブジェクト
-     * @param id   -- 保存するid(テーブルのカラムid)
+     * @param long id   -- 保存するid(テーブルのカラムid)
      * @param args -- 保存するデータの配列
      *             順番は、テーブル作成時に設定したカラムの順番であること。
      * @return -- 成功時(true) 失敗時(false)
@@ -132,7 +133,7 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
     /**
      * saveNew -- データベースに新規登録する。
      * @param db
-     * @param args -- 登録するデータを配列で指定。
+     * @param String[] args -- 登録するデータを配列で指定。
      *             配列の順番は、テーブルのカラム順であること。
      * @return -- true or false
      */
@@ -143,6 +144,19 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_PASSWD, args[2]);
         values.put(COL_MEMO, args[3]);
         db.insert(DB_TABLE, null, values);
+        return true;
+    }
+
+    /**
+     * delData -- データを削除する。
+     * @param db
+     * @param long id -- 削除データのid
+     * @return -- true or false
+     */
+    public boolean deleteId(SQLiteDatabase db, long id) {
+        String whereClause = COL_ID + " = ?";
+        String whereArgs[] = {String.valueOf(id)};
+        db.delete(DB_TABLE, whereClause, whereArgs);
         return true;
     }
 }

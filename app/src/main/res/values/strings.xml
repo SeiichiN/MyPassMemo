@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MyPassMemo</string>
     <string name="text01_title">アカウント一覧</string>
+    <string name="text01_id">カラムid</string>
+    <string name="text01_library">登録名</string>
     <string name="button01_back">戻る</string>
 
     <!-- ここからedhit_pass.xml関連 -->
@@ -24,6 +26,7 @@
     <string name="button02_regist">登録</string>
     <string name="button02_show">一覧にもどる</string>
     <string name="button02_new">新規作成</string>
+    <string name="button02_delete">削除</string>
 
     <!-- 選択用RadioButton -->
     <string name="radio02_library">登録名一覧 (ListView×ArrayAdapter)</string>

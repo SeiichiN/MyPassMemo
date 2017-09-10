@@ -38,6 +38,7 @@ public class EditPass extends AppCompatActivity {
     private Button mButton02Regist;
     private Button mButton02Show;
     private Button mButton02New;
+    private Button mButton02Delete;
 
     private ArrayList<String> items;
     private Long listID;
@@ -64,6 +65,7 @@ public class EditPass extends AppCompatActivity {
             // init();         // 初期値設定
         }
 
+        // 登録ボタンをクリックした時の処理
         mButton02Regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,12 +75,32 @@ public class EditPass extends AppCompatActivity {
             }
         });
 
+        // 一覧に戻るボタンをクリックした時の処理
+        mButton02Show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        // 新規作成ボタンをクリックしたときの処理
         mButton02New.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 newData();
             }
         });
+
+
+        mButton02Delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (i != null) {
+                    delData(listID);
+                }
+            }
+        });
+
     }
 
     private void loadData(long listId){
@@ -151,6 +173,22 @@ public class EditPass extends AppCompatActivity {
         listID = (long) 0;
     }
 
+    // 削除処理
+    private void delData(long idNo) {
+        SQLiteDatabase db = helper.getWritableDatabase();
+        try {
+            if (idNo > 0) {
+                if (helper.deleteId(db, idNo)) {
+                    Toast.makeText(this, "削除しました。", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "削除できませんでした。", Toast.LENGTH_SHORT).show();
+                }
+            }
+        } finally {
+            db.close();
+        }
+    }
+
     /**
      * 各変数とレイアウトファイルの各項目とを結びつける処理
      */
@@ -170,6 +208,7 @@ public class EditPass extends AppCompatActivity {
         mButton02Regist = (Button) findViewById(R.id.button02Regist);
         mButton02Show = (Button) findViewById(R.id.button02Show);
         mButton02New = (Button) findViewById(R.id.button02New);
+        mButton02Delete = (Button) findViewById(R.id.button02Delete);
     }
 
     /**
