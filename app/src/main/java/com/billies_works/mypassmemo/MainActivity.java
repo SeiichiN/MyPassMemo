@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
 
     private SimpleDatabaseHelper helper = null;
     /*
-    private ListView mListView01Library;
     private ArrayList<String> items;
     private ArrayAdapter<String> adapter;
 */
     // ListItemオブジェクトをつくる
     private ArrayList<ListItem> data;
     private MyListAdapter adapter;
+    private ListView mListView;
 
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         // items = new ArrayList<>();
 
         // ListView -- レイアウトファイルと変数を結びつける
-        // mListView01Library = (ListView) findViewById(R.id.listView01Library);
+        // mListView = (ListView) findViewById(R.id.list);
 
         data = new ArrayList<>();
 
@@ -75,41 +75,41 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyListAdapter(this, data, R.layout.one_list);
         ListView list = (ListView) findViewById(R.id.list);
         list.setAdapter(adapter);
-    }
-/*
-        // ArrayAdapterのコンストラクタ
-        // 第1引数 -- Context
-        // 第2引数 -- リソースとして登録されたTextViewに対するリソースID
-        //          今回はもともと用意されている定義済みのレイアウトファイルのID
-        // 第3引数 -- 一覧させたいデータの配列
-        adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_list_item_1, items);
-
-        // ListViewにアダプラーをセット（＝表示）
-        mListView01Library.setAdapter(adapter);
-
-        // ArrayAdapterに対してListViewのリスト(items)の更新
-        adapter.notifyDataSetChanged();
 
         // リスト項目をクリックしたときの処理
-        mListView01Library.setOnItemClickListener(
+        list.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> av,
                                             View view, int position, long id) {
                         // 処理
-                        // ここのid値が、COL_IDをあらわしていない。
-                        String msg = String.format("id= %d", id + 1);
+                        String msg = String.format("id= %d", id);
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
 
                         // EditPassへ遷移
                         Intent intent = new Intent(MainActivity.this, com.billies_works.mypassmemo.EditPass.class);
-                        intent.putExtra("dbNo", id + 1);
+                        intent.putExtra("dbNo", id);
                         startActivity(intent);
 
                     }
 
                 }
         );
-*/
+    }
+
+        // ArrayAdapterのコンストラクタ
+        // 第1引数 -- Context
+        // 第2引数 -- リソースとして登録されたTextViewに対するリソースID
+        //          今回はもともと用意されている定義済みのレイアウトファイルのID
+        // 第3引数 -- 一覧させたいデータの配列
+        //adapter = new ArrayAdapter<>(
+        //        this, android.R.layout.simple_list_item_1, data);
+
+        // ListViewにアダプラーをセット（＝表示）
+        //mListView.setAdapter(adapter);
+
+        // ArrayAdapterに対してListViewのリスト(items)の更新
+        //adapter.notifyDataSetChanged();
+
+
 }
 
