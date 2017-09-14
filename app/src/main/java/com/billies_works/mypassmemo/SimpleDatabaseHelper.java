@@ -3,6 +3,7 @@ package com.billies_works.mypassmemo;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.AtomicFile;
@@ -103,12 +104,14 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
      * save -- データベースにデータをセーブする。
      *
      * @param db   　-- データベースのオブジェクト
-     * @param long id   -- 保存するid(テーブルのカラムid)
+     * @param id   -- 保存するid(テーブルのカラムid) long
      * @param args -- 保存するデータの配列
      *             順番は、テーブル作成時に設定したカラムの順番であること。
      * @return -- 成功時(true) 失敗時(false)
      */
     public boolean saveUpdate(SQLiteDatabase db, long id, String[] args) {
+        int success = 0;
+
         ContentValues values = new ContentValues();
         values.put(COL_LIBRARY, args[0]);
         values.put(COL_LOGINID, args[1]);
@@ -116,8 +119,17 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_MEMO, args[3]);
         String whereClause = COL_ID + " = ?";
         String whereArgs[] = {String.valueOf(id)};
-        db.update(DB_TABLE, values, whereClause, whereArgs);
-        return true;
+
+        db.beginTransaction();
+        try {
+            db.update(DB_TABLE, values, whereClause, whereArgs);
+            db.setTransactionSuccessful();
+            success = 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
         /*
         // この方法でやりたかったが、知りたい情報が見つからなかった。
         String textData = "UPDATE " + DB_TABLE + "SET "
@@ -128,35 +140,73 @@ public class SimpleDatabaseHelper extends SQLiteOpenHelper {
                 +  "WHERE " + COL_ID + " = ?";
         db.execSQL(textData);
         */
+        if (success == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
      * saveNew -- データベースに新規登録する。
      * @param db
-     * @param String[] args -- 登録するデータを配列で指定。
+     * @param args -- 登録するデータを配列で指定。String[]
      *             配列の順番は、テーブルのカラム順であること。
      * @return -- true or false
      */
     public boolean saveNew(SQLiteDatabase db, String[] args) {
+        int success = 0;
+
         ContentValues values = new ContentValues();
         values.put(COL_LIBRARY, args[0]);
         values.put(COL_LOGINID, args[1]);
         values.put(COL_PASSWD, args[2]);
         values.put(COL_MEMO, args[3]);
-        db.insert(DB_TABLE, null, values);
-        return true;
+
+        db.beginTransaction();
+        try {
+            db.insert(DB_TABLE, null, values);
+            db.setTransactionSuccessful();
+            success = 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+        if (success == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
      * delData -- データを削除する。
      * @param db
-     * @param long id -- 削除データのid
+     * @param id -- 削除データのid (long)
      * @return -- true or false
      */
     public boolean deleteId(SQLiteDatabase db, long id) {
+        int success = 0;
+
         String whereClause = COL_ID + " = ?";
         String whereArgs[] = {String.valueOf(id)};
-        db.delete(DB_TABLE, whereClause, whereArgs);
-        return true;
+
+        db.beginTransaction();
+        try {
+            db.delete(DB_TABLE, whereClause, whereArgs);
+            db.setTransactionSuccessful();
+            success = 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+
+        if (success == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

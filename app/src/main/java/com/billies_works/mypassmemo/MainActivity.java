@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -96,20 +98,21 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-        // ArrayAdapterのコンストラクタ
-        // 第1引数 -- Context
-        // 第2引数 -- リソースとして登録されたTextViewに対するリソースID
-        //          今回はもともと用意されている定義済みのレイアウトファイルのID
-        // 第3引数 -- 一覧させたいデータの配列
-        //adapter = new ArrayAdapter<>(
-        //        this, android.R.layout.simple_list_item_1, data);
+    // メニュー定義ファイルをもとにオプションメニューを生成
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.option_menu, menu);
+        return true;
+    }
 
-        // ListViewにアダプラーをセット（＝表示）
-        //mListView.setAdapter(adapter);
-
-        // ArrayAdapterに対してListViewのリスト(items)の更新
-        //adapter.notifyDataSetChanged();
-
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Toast toast = Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT);
+        // toast.show();
+        Intent intent = new Intent(MainActivity.this, com.billies_works.mypassmemo.EditPass.class);
+        intent.putExtra("dbNo", 0);
+        startActivity(intent);
+        return true;
+    }
 }
 

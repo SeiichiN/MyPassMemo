@@ -31,6 +31,7 @@
     <!-- 選択用RadioButton -->
     <string name="radio02_library">登録名一覧 (ListView×ArrayAdapter)</string>
     <string name="radio02_listview">ListView表示 (ListView×BaseAdapter)</string>
+    <string name="makenew">新規作成</string>
     <!-- ここまで -->
 
 </resources>
