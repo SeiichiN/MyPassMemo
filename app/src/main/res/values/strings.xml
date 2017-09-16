@@ -28,7 +28,7 @@
     <string name="text02_memohint">全角・半角120文字以内</string>
     <string name="text02_hintnumber">半角数字</string>
     <string name="button02_regist">登録</string>
-    <string name="button02_show">一覧にもどる</string>
+    <string name="button02_show">もどる</string>
     <string name="button02_new">新規作成</string>
     <string name="button02_delete">削除</string>
 
@@ -37,6 +37,8 @@
     <string name="radio02_listview">ListView表示 (ListView×BaseAdapter)</string>
     <string name="makenew">新規作成</string>
     <string name="button03_edit">編集</string>
+    <string name="button03_show">一覧にもどる</string>
+
     <!-- ここまで -->
 
 </resources>
