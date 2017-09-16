@@ -21,7 +21,7 @@
         tools:ignore="RtlHardcoded">
 
         <TextView
-            android:id="@+id/text02Library"
+            android:id="@+id/text03Library"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -30,28 +30,12 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/text02Kome01"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="@string/text02_kome"
-            android:textColor="#ff0000"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/editText02Library"
+            android:id="@+id/textView03Library"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:ellipsize="end"
-            android:ems="10"
-            android:hint="@string/text02_libraryhint"
-            android:inputType="text"
-            android:lines="1"
-            android:maxLength="30"
-            android:maxLines="1"
-            android:minLines="1"
             android:textSize="16sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -65,7 +49,7 @@
         tools:ignore="RtlHardcoded">
 
         <TextView
-            android:id="@+id/text02LoginId"
+            android:id="@+id/text03LoginId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -74,28 +58,12 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/text02Kome02"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="@string/text02_kome"
-            android:textColor="#ff0000"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/editText02LoginID"
+            android:id="@+id/textView03LoginID"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:ellipsize="end"
-            android:ems="10"
-            android:hint="@string/text02_libraryhint"
-            android:inputType="text"
-            android:lines="1"
-            android:maxLength="30"
-            android:maxLines="1"
-            android:minLines="1"
             android:textSize="16sp" />
+
     </LinearLayout>
 
 <LinearLayout
@@ -109,7 +77,7 @@
     tools:ignore="RtlHardcoded">
 
     <TextView
-        android:id="@+id/text02PassWD"
+        android:id="@+id/text03PassWD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
@@ -118,28 +86,12 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text02Kome03"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.1"
-        android:text="@string/text02_kome"
-        android:textColor="#ff0000"
-        android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/editText02PassWD"
+        android:id="@+id/textView03PassWD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:ellipsize="end"
-        android:ems="10"
-        android:hint="@string/text02_libraryhint"
-        android:inputType="text"
-        android:lines="1"
-        android:maxLength="30"
-        android:maxLines="1"
-        android:minLines="1"
         android:textSize="16sp" />
+
 </LinearLayout>
 
 <LinearLayout
@@ -153,7 +105,7 @@
     tools:ignore="RtlHardcoded">
 
     <TextView
-        android:id="@+id/text01Memo"
+        android:id="@+id/text03Memo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
@@ -162,14 +114,18 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text02Kome04"
+        android:id="@+id/textView03Memo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.1"
-        android:text="@string/text02_kome"
-        android:textColor="#ff0000"
-        android:textSize="14sp" />
+        android:layout_weight="0.5"
+        android:inputType="text|textMultiLine"
+        android:lines="5"
+        android:maxLength="120"
+        android:maxLines="5"
+        android:minLines="5"
+        tools:ignore="TextViewEdits" />
 
+    <!--
     <EditText
         android:id="@+id/editText02Memo"
         android:layout_width="0dp"
@@ -184,17 +140,18 @@
         android:maxLines="5"
         android:minLines="5"
         android:textSize="16sp" />
+        -->
 </LinearLayout>
 
-<Button
-    android:id="@+id/button03Edit"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/LinearLayout03Memo"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="12dp"
-    android:text="@string/button02_regist"
-    android:textSize="16sp" />
+    <Button
+        android:id="@+id/button03Edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout03Memo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="@string/button03_edit"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/button03Show"
@@ -207,20 +164,10 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/button02New"
+        android:id="@+id/button03Delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/button03Show"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:text="@string/button02_new"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/button02Delete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button02New"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
         android:text="@string/button02_delete"

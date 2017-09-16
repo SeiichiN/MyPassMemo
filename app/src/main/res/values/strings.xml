@@ -15,6 +15,10 @@
 
     <string name="text02_libraryhint">全角・半角30文字以内</string>
 
+    <!-- view_pass.xml -->
+    <string name="text03_title">アカウント表示</string>
+
+
     <!-- タイトル -->
     <string name="name_selectsheet_library">登録名一覧画面</string>
     <string name="name_selectsheet_listview">ListView表示画面</string>
@@ -32,6 +36,7 @@
     <string name="radio02_library">登録名一覧 (ListView×ArrayAdapter)</string>
     <string name="radio02_listview">ListView表示 (ListView×BaseAdapter)</string>
     <string name="makenew">新規作成</string>
+    <string name="button03_edit">編集</string>
     <!-- ここまで -->
 
 </resources>

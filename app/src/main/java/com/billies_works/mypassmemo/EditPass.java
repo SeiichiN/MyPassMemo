@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -144,20 +143,20 @@ public class EditPass extends AppCompatActivity {
         String strLoginId = mEditText02LoginId.getText().toString();
         String strPassword = mEditText02Password.getText().toString();
         String strMemo = mEditText02Memo.getText().toString();
-        String saveData[] = {strLibrary, strLoginId, strPassword, strMemo};
+        String saveDataStr[] = {strLibrary, strLoginId, strPassword, strMemo};
 
         // データベース取得
         SQLiteDatabase db = helper.getWritableDatabase();
         try {
             Toast.makeText(this, "接続しました。", Toast.LENGTH_SHORT).show();
             if (idNo > 0) {
-                if (helper.saveUpdate(db, idNo, saveData)) {
+                if (helper.saveUpdate(db, idNo, saveDataStr)) {
                     Toast.makeText(this, "更新しました。", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "更新できませんでした。", Toast.LENGTH_SHORT).show();
                 }
             } else if (idNo == 0) {
-                if (helper.saveNew(db, saveData)) {
+                if (helper.saveNew(db, saveDataStr)) {
                     Toast.makeText(this, "新規登録しました。", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "新規登録に失敗しました。", Toast.LENGTH_SHORT).show();
@@ -205,8 +204,8 @@ public class EditPass extends AppCompatActivity {
         mText02Kome03 = (TextView) findViewById(R.id.text02Kome03);
         mText02Kome04 = (TextView) findViewById(R.id.text02Kome04);
 
-        mButton02Regist = (Button) findViewById(R.id.button02Regist);
-        mButton02Show = (Button) findViewById(R.id.button02Show);
+        mButton02Regist = (Button) findViewById(R.id.button03Edit);
+        mButton02Show = (Button) findViewById(R.id.button03Show);
         mButton02New = (Button) findViewById(R.id.button02New);
         mButton02Delete = (Button) findViewById(R.id.button02Delete);
     }

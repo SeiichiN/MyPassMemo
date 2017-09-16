@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
 
                         // EditPassへ遷移
-                        Intent intent = new Intent(MainActivity.this, com.billies_works.mypassmemo.EditPass.class);
+                        Intent intent = new Intent(MainActivity.this, com.billies_works.mypassmemo.ViewPass.class);
                         intent.putExtra("dbNo", id);
                         startActivity(intent);
 
