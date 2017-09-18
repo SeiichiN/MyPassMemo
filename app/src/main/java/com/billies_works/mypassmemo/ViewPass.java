@@ -55,6 +55,7 @@ public class ViewPass extends AppCompatActivity {
             loadData(listID);
         }
         else {
+            loadData(listID);
             // init();         // 初期値設定
         }
 
@@ -66,15 +67,19 @@ public class ViewPass extends AppCompatActivity {
                     // EditPassへintentする
                     Intent intent = new Intent(ViewPass.this, com.billies_works.mypassmemo.EditPass.class);
                     intent.putExtra("dbNo", listID);
-                    startActivity(intent);
+                    startActivityForResult(intent, 1);
                 }
             }
         });
+
 
         // 一覧に戻るボタンをクリックした時の処理
         mButton03Show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("dbNo", listID);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -99,6 +104,17 @@ public class ViewPass extends AppCompatActivity {
         });
     }
 
+
+    // EditPassから結果を戻されたときの処理
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // リクエストコードと結果コードをチェック
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            // listID = data.getLongExtra("dbNo");
+            loadData(listID);
+        }
+    }
 
     /**
      * 各変数とレイアウトファイルの各項目とを結びつける処理
@@ -175,13 +191,14 @@ public class ViewPass extends AppCompatActivity {
         return true;
     }
 
+    // オプションメニューをクリックしたときの処理
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Toast toast = Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT);
         // toast.show();
-        Intent intent = new Intent(ViewPass.this, com.billies_works.mypassmemo.EditPass.class);
-        intent.putExtra("dbNo", 0);
-        startActivity(intent);
+        i = new Intent(ViewPass.this, com.billies_works.mypassmemo.EditPass.class);
+        i.putExtra("dbNo", 0);
+        startActivity(i);
         return true;
     }
 

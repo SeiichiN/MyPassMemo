@@ -74,10 +74,13 @@ public class EditPass extends AppCompatActivity {
             }
         });
 
-        // 一覧に戻るボタンをクリックした時の処理
+        // 戻るボタンをクリックした時の処理
         mButton02Show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("dbNo", listID);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
